@@ -1,5 +1,6 @@
 package com.testapp.main;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.testapp.model.Employee;
@@ -30,6 +31,8 @@ public class App {
 				 			"Operation Failed, Try Again"); 
 				 break; 
 			 case 2: 
+				 List<Employee> list = employeeService.getAllEmployees();
+				 list.stream().forEach(System.out :: println);
 				 break;
 			 case 3: 
 				 break;

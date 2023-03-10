@@ -1,5 +1,6 @@
 package com.testapp.service;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.testapp.db.EmployeeDB;
@@ -26,6 +27,12 @@ public class EmployeeService {
 		 EmployeeDB db = new EmployeeDB();
 		 return db.addEmployeeToDb(employee);
 		
+	}
+
+	public List<Employee> getAllEmployees() {
+		EmployeeDB db = new EmployeeDB();
+		
+		return db.getAllEmployees();
 	}
 
 }
