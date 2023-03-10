@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import com.testapp.model.Employee;
 import com.testapp.service.EmployeeService;
+import com.testapp.utility.EmployeeUtility;
 
 public class App {
 	public static void main(String[] args) {
@@ -24,7 +25,7 @@ public class App {
 			 }
 			 switch(input) {
 			 case 1: 
-				 Employee employee = employeeService.readInput();
+				 Employee employee = EmployeeUtility.readInput();
 				 System.out.println
 				 	(employeeService.addEmployeeToDb(employee) == 1? 
 				 			"Record Inserted": 
@@ -62,7 +63,7 @@ public class App {
 				 System.out.println(employee);
 				 System.out.println("Lets update this record");
 				 /* Read new Emmployee values to Update */
-				 employee = employeeService.readInput();
+				 employee = EmployeeUtility.readInput();
 				 employee.setId(id);
 				 /* Update the record */
 				 System.out.println(
