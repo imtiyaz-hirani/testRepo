@@ -35,4 +35,19 @@ public class EmployeeService {
 		return db.getAllEmployees();
 	}
 
+	public Employee findEmployeeById(int id) {
+		EmployeeDB db = new EmployeeDB();
+		
+		return db.findEmployeeById(id);
+	}
+
+	public int deleteEmployee(Employee employee) {
+		EmployeeDB db = new EmployeeDB();
+		
+		return db.deleteEmployee(employee.getId());
+	}
+
 }
+
+
+

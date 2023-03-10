@@ -87,6 +87,46 @@ public class EmployeeDB {
 		dbClose();
 		return list;
 	}
+
+	public Employee findEmployeeById(int id) {
+		dbConnect();
+		String sql = "select * from employee where id=?";
+		try {
+			PreparedStatement pstmt =  con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			ResultSet rst  = pstmt.executeQuery();
+			if(rst.next()) {
+				Employee employee = new Employee(); //100X:1, harry
+				employee.setId(rst.getInt("id"));
+				employee.setName(rst.getString("name"));
+				employee.setCity(rst.getString("city"));
+				employee.setSalary(rst.getDouble("salary"));
+				employee.setDepartment(rst.getString("department"));
+				return employee;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbClose();
+		return null;
+	}
+
+	public int deleteEmployee(int id) {
+		dbConnect();
+		String sql="delete from employee where id=?";
+		
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbClose();
+		return 0;
+	}
 }
 
 /* 

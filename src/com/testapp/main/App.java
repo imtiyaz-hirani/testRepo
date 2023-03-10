@@ -35,6 +35,17 @@ public class App {
 				 list.stream().forEach(System.out :: println);
 				 break;
 			 case 3: 
+				 System.out.println("Enter employee id to delete");
+				 int id = sc.nextInt();
+				 employee = employeeService.findEmployeeById(id);
+				 if(employee == null) {
+					 System.out.println("Invalid ID");
+					 break;
+				 }
+				 System.out.println
+				 	(employeeService.deleteEmployee(employee) == 1? 
+				 			"Record Deleted": 
+				 			"Operation Failed, Try Again"); 
 				 break;
 			 case 4: 
 				 break;
