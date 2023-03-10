@@ -127,6 +127,25 @@ public class EmployeeDB {
 		dbClose();
 		return 0;
 	}
+
+	public int updateEmployee(Employee employee) {
+		dbConnect();
+		String sql="update employee SET name=?, city=?,department=?,salary=? where id=?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, employee.getName());
+			pstmt.setString(2, employee.getCity());
+			pstmt.setString(3, employee.getDepartment());
+			pstmt.setDouble(4, employee.getSalary());
+			pstmt.setInt(5, employee.getId());
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		dbClose();
+		return 0;
+	}
 }
 
 /* 

@@ -47,6 +47,13 @@ public class EmployeeService {
 		return db.deleteEmployee(employee.getId());
 	}
 
+	public int updateEmployee(Employee employee) {
+		 
+		return new EmployeeDB().updateEmployee(employee);
+	}
+
+	 
+
 }
 
 

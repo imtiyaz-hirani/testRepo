@@ -48,6 +48,27 @@ public class App {
 				 			"Operation Failed, Try Again"); 
 				 break;
 			 case 4: 
+				 System.out.println("Enter employee id to edit");
+				 id = sc.nextInt();
+				 /* Validate ID*/
+				 employee = employeeService.findEmployeeById(id);
+				 if(employee == null) {
+					 System.out.println("Invalid ID");
+					 break;
+				 }
+				 /* Fetch existing record for the given ID */
+				 employee = employeeService.findEmployeeById(id);
+				 System.out.println("Exiting Employee Record from ID: " + id);
+				 System.out.println(employee);
+				 System.out.println("Lets update this record");
+				 /* Read new Emmployee values to Update */
+				 employee = employeeService.readInput();
+				 employee.setId(id);
+				 /* Update the record */
+				 System.out.println(
+						 employeeService.updateEmployee(employee)==1?
+								 "Record Updated": 
+								 "Operation Failed, Try Again");
 				 break;
 			 default: 
 				 break; 
