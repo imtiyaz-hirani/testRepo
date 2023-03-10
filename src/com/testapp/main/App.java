@@ -1,7 +1,9 @@
 package com.testapp.main;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 import com.testapp.model.Employee;
 import com.testapp.service.EmployeeService;
@@ -17,6 +19,7 @@ public class App {
 			 System.out.println("2. Fetch all employee");
 			 System.out.println("3. Delete Employee");
 			 System.out.println("4. Update employee");
+			 System.out.println("5. Filteration ");
 			 System.out.println("0. Exit");
 			 int input = sc.nextInt();
 			 if(input == 0) {
@@ -71,6 +74,23 @@ public class App {
 								 "Record Updated": 
 								 "Operation Failed, Try Again");
 				 break;
+			 case 5:
+				 System.out.println("Press 1 for filter on city");
+				 System.out.println("Press 2 for filter on department");
+				 int field = sc.nextInt(); //1 or 2
+				 System.out.println(field == 1?"Enter City value": "Enter department value");
+				 String value = sc.next();
+				 Predicate<Employee> p1 = (Employee e) -> e.getCity().equalsIgnoreCase(value);
+				 Predicate<Employee> p2 = (Employee e)-> e.getDepartment().equalsIgnoreCase(value);
+				 List<Employee> filteredList = new ArrayList<>();
+				 if(field == 1)
+					 filteredList = employeeService.filterList(employeeService.getAllEmployees(),p1); 
+				 else
+					 filteredList =  employeeService.filterList(employeeService.getAllEmployees(),p2); 
+				 
+				 System.out.println("---------Filtered List-------");
+				 filteredList.stream().forEach(System.out :: println);
+				 break; 
 			 default: 
 				 break; 
 			 }
